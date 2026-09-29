@@ -24,7 +24,12 @@ function esc(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-const soundIcon = () => icon(Audio.isMuted() ? "soundOff" : "soundOn");
+/** Кнопки «звуки» и «музыка» — в левом и правом углу карточки, отдельно друг от друга. */
+const soundBtn = () => `<button class="icon-btn${Audio.isMuted() ? " muted" : ""}" data-act="sound" aria-label="${t("sfx")}" title="${t("sfx")}">${icon(Audio.isMuted() ? "soundOff" : "soundOn")}</button>`;
+const musicBtn = () => `<button class="icon-btn left${Audio.isMusicOff() ? " muted" : ""}" data-act="music" aria-label="${t("music")}" title="${t("music")}">${icon(Audio.isMusicOff() ? "musicOff" : "musicOn")}</button>`;
+
+/** После переключения: перерисовать кнопку на месте. */
+const refresh = (btn, make) => { btn.outerHTML = make(); };
 
 const UI = {
   el: null,
@@ -67,7 +72,7 @@ const UI = {
       ? `<button class="btn ghost small" data-act="login">${icon("user")}${t("login")}</button>`
       : "";
     this.open("menu", `
-      <button class="icon-btn" data-act="sound" aria-label="${t("sound")}">${soundIcon()}</button>
+      ${musicBtn()}${soundBtn()}
       <div class="logo"><span class="logo-a">SPACE</span><span class="logo-b">JUMP</span></div>
       <div class="player">${icon("user")}<span>${esc(YSDK.getName())}</span></div>
       <div class="stats">
@@ -89,7 +94,8 @@ const UI = {
       skins:   () => h.onShop("skins"),
       leaders: () => h.onLeaders(),
       login:   () => h.onLogin(),
-      sound:   btn => { h.onSound(); btn.innerHTML = soundIcon(); },
+      sound:   btn => { h.onSound(); refresh(btn, soundBtn); },
+      music:   btn => { h.onMusic(); refresh(btn, musicBtn); },
     });
   },
 
@@ -264,7 +270,7 @@ const UI = {
 
   pause(h) {
     this.open("pause", `
-      <button class="icon-btn" data-act="sound" aria-label="${t("sound")}">${soundIcon()}</button>
+      ${musicBtn()}${soundBtn()}
       <div class="screen-title">${t("pause")}</div>
       <button class="btn primary big" data-act="resume">${icon("play")}${t("resume")}</button>
       <button class="btn" data-act="restart">${icon("restart")}${t("restart")}</button>
@@ -273,7 +279,8 @@ const UI = {
       resume:  () => h.onResume(),
       restart: () => h.onRestart(),
       menu:    () => h.onMenu(),
-      sound:   btn => { h.onSound(); btn.innerHTML = soundIcon(); },
+      sound:   btn => { h.onSound(); refresh(btn, soundBtn); },
+      music:   btn => { h.onMusic(); refresh(btn, musicBtn); },
     });
   },
 

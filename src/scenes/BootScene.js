@@ -59,6 +59,7 @@ export default class BootScene extends Phaser.Scene {
 
     Audio.init(this.game, manifest?.sounds);
     Audio.setMuted(GameState.muted);
+    Audio.setMusicOff(GameState.musicOff);
 
     const rotate = document.querySelector("#rotate span");
     if (rotate) rotate.textContent = t("rotate");

@@ -48,7 +48,8 @@ const GameState = {
   skins:      ["white"],   // купленные скины
   skin:       "white",     // надетый скин
   hints:      {},          // показанные подсказки { hot: true, ... }
-  muted:      false,
+  muted:      false,       // звуки выключены
+  musicOff:   false,       // музыка выключена (отдельно от звуков)
   tutorial:   false,  // обучение пройдено
   runs:       0,
   rev:        0,      // ревизия снимка
@@ -171,6 +172,7 @@ const GameState = {
       skin:       this.skin,
       hints:      { ...this.hints },
       muted:      !!this.muted,
+      musicOff:   !!this.musicOff,
       tutorial:   !!this.tutorial,
       runs:       this.runs | 0,
       rev:        this.rev | 0,
@@ -202,6 +204,7 @@ const GameState = {
       skin,
       hints,
       muted:      !!d.muted,
+      musicOff:   !!d.musicOff,
       tutorial:   !!d.tutorial,
       runs:       int(d.runs),
       rev:        int(d.rev, -1),
@@ -215,6 +218,7 @@ const GameState = {
     this.skin     = d.skin;
     this.hints    = d.hints;
     this.muted    = d.muted;
+    this.musicOff = d.musicOff;
     this.tutorial = d.tutorial;
     this.runs     = d.runs;
   },

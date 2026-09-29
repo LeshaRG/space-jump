@@ -83,6 +83,8 @@ window.addEventListener("pagehide", () => GameState.flush());
 // Сменили аккаунт в диалоге Яндекса — перечитываем прогресс
 YSDK.onAccount(async () => {
   await GameState.load();
+  Audio.setMuted(GameState.muted);
+  Audio.setMusicOff(GameState.musicOff);
   const scene = game.scene.getScene("GameScene");
   if (!scene?.sys.isActive()) return;
   await scene.applySkin(GameState.skin);   // у другого аккаунта может быть другой скин

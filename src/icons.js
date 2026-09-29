@@ -33,6 +33,11 @@ const PATHS = {
           + `<path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" ${SW}/>`,
   soundOff: '<path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z" fill="currentColor"/>'
           + `<path d="m16 9.5 5 5M21 9.5l-5 5" ${SW}/>`,
+  musicOn:  `<path d="M9 17.5V6l10-2v11.5" ${SW}/>`
+          + '<circle cx="6.5" cy="17.5" r="2.6" fill="currentColor"/><circle cx="16.5" cy="15.5" r="2.6" fill="currentColor"/>',
+  musicOff: `<path d="M9 17.5V6l10-2v11.5" ${SW}/>`
+          + '<circle cx="6.5" cy="17.5" r="2.6" fill="currentColor"/><circle cx="16.5" cy="15.5" r="2.6" fill="currentColor"/>'
+          + `<path d="M3.5 3.5l17 17" ${SW}/>`,
 
   user:    `<circle cx="12" cy="8" r="4" ${SW}/><path d="M4.5 20c1-3.8 3.9-5.8 7.5-5.8s6.5 2 7.5 5.8" ${SW}/>`,
   star:    '<path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.5 1.1 6.3L12 17.3l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z" fill="currentColor"/>',

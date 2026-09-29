@@ -222,7 +222,7 @@ const CONFIG = {
 
   AUDIO: {
     SFX:   0.55,
-    MUSIC: 0.30,
+    MUSIC: 0.18,            // было 0.30 — на 40 % тише
   },
 
   STORAGE: {

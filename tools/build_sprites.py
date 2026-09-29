@@ -174,7 +174,15 @@ def build_group(name, settings, members, force_scale=None):
             frames.append({"path": p, "img": img, "alpha": alpha, "bbox": content_bbox(alpha)})
 
         kind = cfg.get("anchor", settings.get("anchor", "center"))
-        if cfg.get("align") == "each":
+        fixed = cfg.get("anchors")
+        if fixed and len(fixed) == len(frames):
+            # Опоры заданы заранее (скины: опора оригинального кадра героя —
+            # дорисованные рога и хвост её не сдвигают)
+            each = cfg.get("align") == "each"
+            for i, f in enumerate(frames):
+                a = fixed[i] if each else fixed[0]
+                f["anchor"] = (float(a[0]), float(a[1]))
+        elif cfg.get("align") == "each":
             # Кадры нарисованы со сдвигом — каждый выравниваем по своей опоре
             for f in frames:
                 f["anchor"] = find_anchor(kind, f["alpha"], f["bbox"])
@@ -388,6 +396,12 @@ def build_skins(groups, sprite_defs, base, warnings):
             except FileNotFoundError:
                 continue
             cfg = {k: v for k, v in sprite_defs.get(slot, {}).items() if k != "src"}
+            sidecar = os.path.join(slots[slot], "anchors.json")
+            if os.path.isfile(sidecar):
+                try:
+                    cfg["anchors"] = json.load(open(sidecar, encoding="utf-8"))["anchors"]
+                except (ValueError, KeyError) as e:
+                    warnings.append(f"скин {skin}/{slot}: anchors.json не прочитан ({e})")
             members.append((slot, cfg, paths))
         if not members:
             continue

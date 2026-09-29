@@ -105,8 +105,9 @@ function onChange(file) {
   if (!file || IGNORE.test(file) || !reallyChanged(file)) return;
   const ext = path.extname(file).toLowerCase();
   const sound = [".mp3", ".ogg", ".wav", ".m4a"].includes(ext);
-  // Новый звук тоже требует пересборки: список звуков лежит в манифесте
-  if (ext === ".png" || sound || file.endsWith("art.config.json")) pending.art = true;
+  // Новый звук тоже требует пересборки: список звуков лежит в манифесте.
+  // JSON в art/ — это anchors.json скинов, тоже графика
+  if (ext === ".png" || sound || file.endsWith("art.config.json") || (ext === ".json" && /^art[\\/]/.test(file))) pending.art = true;
   else if ([".js", ".html", ".css", ".json"].includes(ext)) pending.code = true;
   else return;
 

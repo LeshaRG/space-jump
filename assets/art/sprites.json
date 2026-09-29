@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T15:34:16",
+ "generated": "2026-09-29T15:59:22",
  "atlas": {
   "key": "art",
   "json": "assets/art/atlas.json",
@@ -360,7 +360,7 @@
     "hero_crouch": {
      "fps": 10,
      "size": [
-      228,
+      190,
       281
      ],
      "pivot": [
@@ -376,7 +376,7 @@
     "hero_idle": {
      "fps": 2.2,
      "size": [
-      228,
+      190,
       281
      ],
      "pivot": [
@@ -393,7 +393,7 @@
     "hero_jetpack": {
      "fps": 12,
      "size": [
-      228,
+      190,
       281
      ],
      "pivot": [
@@ -416,7 +416,7 @@
     "hero_jump": {
      "fps": 10,
      "size": [
-      228,
+      190,
       281
      ],
      "pivot": [

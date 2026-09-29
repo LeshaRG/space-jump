@@ -1143,11 +1143,14 @@ export default class GameScene extends Phaser.Scene {
       onLogin:   async () => {
         if (await YSDK.openAuthDialog()) {
           await GameState.load();
+          Audio.setMuted(GameState.muted);
+          Audio.setMusicOff(GameState.musicOff);
           await this.applySkin(GameState.skin);
           this.showMenu();
         }
       },
       onSound:   () => this.toggleSound(),
+      onMusic:   () => this.toggleMusic(),
     });
     this.syncGameplay();
   }
@@ -1413,6 +1416,7 @@ export default class GameScene extends Phaser.Scene {
       onRestart: () => this.restart(true),
       onMenu:    () => this.restart(false),
       onSound:   () => this.toggleSound(),
+      onMusic:   () => this.toggleMusic(),
     });
     this.syncGameplay();
   }
@@ -1424,9 +1428,16 @@ export default class GameScene extends Phaser.Scene {
     this.syncGameplay();
   }
 
+  /** Звуки (эффекты) — отдельно от музыки. */
   toggleSound() {
     GameState.muted = !GameState.muted;
     Audio.setMuted(GameState.muted);
+    GameState.save();
+  }
+
+  toggleMusic() {
+    GameState.musicOff = !GameState.musicOff;
+    Audio.setMusicOff(GameState.musicOff);
     GameState.save();
   }
 

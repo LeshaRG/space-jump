@@ -34,6 +34,9 @@ except ImportError:
     print("Нужны Pillow, numpy и scipy:  pip install pillow numpy scipy")
     sys.exit(2)
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_sprites import anchor_feet, content_bbox   # та же опора, что при сборке атласа
+
 ROOT     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG   = os.path.join(ROOT, "art.config.json")
 OUT_DIR  = os.path.join(ROOT, "art", "skins")
@@ -122,14 +125,13 @@ def analyze(img):
 
 
 def feet_anchor(m):
-    """Середина подошв — как в build_sprites.py (привязка принта к ногам)."""
-    solid = m["a"] > 0.5
-    rows = np.nonzero(solid.sum(axis=1) >= 3)[0]
-    bottom = int(rows.max())
-    band = max(4, int((bottom - rows.min()) * 0.035))
-    _, xs = np.nonzero(solid[bottom - band: bottom + 1])
-    lo, hi = np.percentile(xs, 10), np.percentile(xs, 90)
-    return (lo + hi) / 2.0, float(bottom + 1)
+    """
+    Середина подошв оригинального кадра — ровно как её ищет build_sprites.py.
+    По ней привязан принт, и её же сборщик берёт как опору скина (anchors.json):
+    иначе хвост демона у самых ног сдвигал бы опору, и поза «прыгала» бы.
+    """
+    a8 = (m["a"] * 255 + 0.5).astype(np.uint8)
+    return anchor_feet(a8, content_bbox(a8))
 
 
 def helmet_circle(m):
@@ -535,6 +537,7 @@ def main():
             for old in os.listdir(d):
                 if old.lower().endswith(".png"):
                     os.remove(os.path.join(d, old))
+            anchors = []
             for i, p in enumerate(paths):
                 if p not in cache:
                     base = load(p)
@@ -545,7 +548,13 @@ def main():
                 make(skin, img, m, anchor, H)
                 Image.fromarray((np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8), "RGBA").save(
                     os.path.join(d, f"{i + 1}.png"), optimize=True)
+                anchors.append([round(anchor[0], 2), round(anchor[1], 2)])
                 n += 1
+            # Опора каждого кадра — с оригинала: рога, хвост и принт её не сдвигают
+            with open(os.path.join(d, "anchors.json"), "w", encoding="utf-8") as fh:
+                json.dump({"_help": "Опора (середина подошв) каждого кадра, px. Берётся с оригинального "
+                                    "кадра героя; если перерисуете кадр на другом холсте — удалите этот файл.",
+                           "anchors": anchors}, fh, ensure_ascii=False, indent=1)
         print(f"  {skin:<6} кадров: {n}")
     print(f"Готово: {os.path.relpath(OUT_DIR, ROOT)}  (атласы соберёт tools/build_sprites.py)")
 

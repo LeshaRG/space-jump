@@ -20,7 +20,9 @@ const Audio = {
   _files:  new Set(),
   _loops:  new Map(),
   _music:  null,
-  _muted:  false,
+  _muted:  false,    // звуки (эффекты) выключены
+  _musicOff: false,  // музыка выключена — отдельно от звуков
+  _musicWanted: false,
   _paused: false,
 
   /** @param {Phaser.Game} game  @param {object} sounds — список файлов из манифеста */
@@ -86,20 +88,27 @@ const Audio = {
    * касания браузер звук не даёт: тогда музыка стартует сразу после него.
    */
   music(on) {
+    this._musicWanted = !!on;
+    this._syncMusic();
+  },
+
+  /** Играет музыка, только если её хочет игра и её не выключил игрок. */
+  _syncMusic() {
     if (!this._files.has("music") || !this._game) return;
     const snd = this._game.sound;
-    if (on && !this._music) {
+    const play = this._musicWanted && !this._musicOff;
+    if (play && !this._music) {
       if (snd.locked) {
         if (!this._musicWait) {
           this._musicWait = true;
-          snd.once(Phaser.Sound.Events.UNLOCKED, () => { this._musicWait = false; this.music(true); });
+          snd.once(Phaser.Sound.Events.UNLOCKED, () => { this._musicWait = false; this._syncMusic(); });
         }
         return;
       }
-      this._music = snd.add("music", { loop: true, volume: this._muted ? 0 : CONFIG.AUDIO.MUSIC });
+      this._music = snd.add("music", { loop: true, volume: CONFIG.AUDIO.MUSIC });
       this._music.play();
       if (this._paused) this._music.pause();
-    } else if (!on && this._music) {
+    } else if (!play && this._music) {
       this._music.stop();
       this._music.destroy();
       this._music = null;
@@ -108,14 +117,22 @@ const Audio = {
 
   /* ═══════ Громкость и пауза ═══════ */
 
+  /** Звуки (эффекты) — музыку не трогает. */
   setMuted(m) {
     this._muted = !!m;
     if (this._out) this._out.gain.value = this._muted ? 0 : CONFIG.AUDIO.SFX;
-    if (this._game) this._game.sound.mute = this._muted;
-    if (this._music) this._music.setVolume(this._muted ? 0 : CONFIG.AUDIO.MUSIC);
+    if (this._muted) this.stopLoops();
   },
 
   isMuted() { return this._muted; },
+
+  /** Музыка — отдельно от звуков. */
+  setMusicOff(off) {
+    this._musicOff = !!off;
+    this._syncMusic();
+  },
+
+  isMusicOff() { return this._musicOff; },
 
   /** Пауза платформы / скрытая вкладка / реклама: тишина целиком. */
   pause() {

@@ -1,0 +1,606 @@
+{
+ "generated": "2026-09-29T15:34:16",
+ "atlas": {
+  "key": "art",
+  "json": "assets/art/atlas.json",
+  "path": "assets/art/"
+ },
+ "sprites": {
+  "hero_crouch": {
+   "fps": 10,
+   "size": [
+    188,
+    242
+   ],
+   "pivot": [
+    0.5,
+    0.99484
+   ],
+   "ref": 240,
+   "group": "hero",
+   "frames": [
+    "hero_crouch/0"
+   ]
+  },
+  "hero_idle": {
+   "fps": 2.2,
+   "size": [
+    188,
+    242
+   ],
+   "pivot": [
+    0.5,
+    0.99484
+   ],
+   "ref": 240,
+   "group": "hero",
+   "frames": [
+    "hero_idle/0",
+    "hero_idle/1"
+   ]
+  },
+  "hero_jetpack": {
+   "fps": 12,
+   "size": [
+    188,
+    242
+   ],
+   "pivot": [
+    0.5,
+    0.99484
+   ],
+   "ref": 240,
+   "group": "hero",
+   "frames": [
+    "hero_jetpack/0",
+    "hero_jetpack/1",
+    "hero_jetpack/2",
+    "hero_jetpack/3",
+    "hero_jetpack/4",
+    "hero_jetpack/3",
+    "hero_jetpack/2",
+    "hero_jetpack/1"
+   ]
+  },
+  "hero_jump": {
+   "fps": 10,
+   "size": [
+    188,
+    242
+   ],
+   "pivot": [
+    0.5,
+    0.99484
+   ],
+   "ref": 240,
+   "group": "hero",
+   "frames": [
+    "hero_jump/0"
+   ]
+  },
+  "platform": {
+   "fps": 7,
+   "size": [
+    342,
+    123
+   ],
+   "pivot": [
+    0.5,
+    0.06657
+   ],
+   "ref": 340,
+   "group": "_platform",
+   "frames": [
+    "platform/0",
+    "platform/1",
+    "platform/2",
+    "platform/2",
+    "platform/2",
+    "platform/1"
+   ]
+  }
+ },
+ "skins": {
+  "white": {
+   "icon": "assets/art/skins/white_icon.png"
+  },
+  "biker": {
+   "atlas": {
+    "key": "skin_biker",
+    "json": "assets/art/skins/biker.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/biker_icon.png"
+  },
+  "black": {
+   "atlas": {
+    "key": "skin_black",
+    "json": "assets/art/skins/black.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/black_icon.png"
+  },
+  "daisy": {
+   "atlas": {
+    "key": "skin_daisy",
+    "json": "assets/art/skins/daisy.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/daisy_icon.png"
+  },
+  "demon": {
+   "atlas": {
+    "key": "skin_demon",
+    "json": "assets/art/skins/demon.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      228,
+      281
+     ],
+     "pivot": [
+      0.5,
+      0.99455
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      228,
+      281
+     ],
+     "pivot": [
+      0.5,
+      0.99455
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      228,
+      281
+     ],
+     "pivot": [
+      0.5,
+      0.99455
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      228,
+      281
+     ],
+     "pivot": [
+      0.5,
+      0.99455
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/demon_icon.png"
+  },
+  "hemp": {
+   "atlas": {
+    "key": "skin_hemp",
+    "json": "assets/art/skins/hemp.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/hemp_icon.png"
+  },
+  "red": {
+   "atlas": {
+    "key": "skin_red",
+    "json": "assets/art/skins/red.json",
+    "path": "assets/art/skins/"
+   },
+   "sprites": {
+    "hero_crouch": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_crouch/0"
+     ]
+    },
+    "hero_idle": {
+     "fps": 2.2,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_idle/0",
+      "hero_idle/1"
+     ]
+    },
+    "hero_jetpack": {
+     "fps": 12,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jetpack/0",
+      "hero_jetpack/1",
+      "hero_jetpack/2",
+      "hero_jetpack/3",
+      "hero_jetpack/4",
+      "hero_jetpack/3",
+      "hero_jetpack/2",
+      "hero_jetpack/1"
+     ]
+    },
+    "hero_jump": {
+     "fps": 10,
+     "size": [
+      188,
+      242
+     ],
+     "pivot": [
+      0.5,
+      0.99484
+     ],
+     "ref": 240,
+     "group": "hero",
+     "frames": [
+      "hero_jump/0"
+     ]
+    }
+   },
+   "icon": "assets/art/skins/red_icon.png"
+  }
+ },
+ "sounds": {
+  "music": [
+   "assets/sounds/music.ogg",
+   "assets/sounds/music.wav"
+  ]
+ }
+}

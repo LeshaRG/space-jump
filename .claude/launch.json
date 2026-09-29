@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "space-jump",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["dev-server.js"],
+      "port": 5174
+    },
+    {
+      "name": "space-jump-5173",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["dev-server.js", "--port", "5173"],
+      "port": 5173
+    }
+  ]
+}

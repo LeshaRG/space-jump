@@ -1,0 +1,21 @@
+{
+  "_help": [
+    "Какие исходные картинки становятся какими спрайтами игры.",
+    "src — файл, список файлов или папка с кадрами 1.png, 2.png, ... (анимация идёт по порядку и по кругу).",
+    "fps — скорость анимации. group — общий масштаб и точка опоры (у героя это ноги).",
+    "align: each — выровнять каждый кадр по ногам отдельно (если кадры нарисованы со сдвигом).",
+    "Слоты без записи здесь можно положить в папку art/<имя_слота>/ — подхватятся сами.",
+    "Список всех слотов и что в них рисовать — в README.md. После правок: python tools/build_sprites.py"
+  ],
+  "groups": {
+    "hero": { "height": 240, "anchor": "feet", "ref": "hero_idle" }
+  },
+  "sprites": {
+    "hero_idle":    { "src": ["GG/стоит.png", "GG/стоит2.png"], "fps": 2.2, "group": "hero", "align": "each" },
+    "hero_crouch":  { "src": "GG/присед перед прыжком.png", "group": "hero" },
+    "hero_jump":    { "src": "GG/прыжок.png", "group": "hero" },
+    "hero_jetpack": { "src": "GG/jetpackanim", "fps": 12, "group": "hero" },
+
+    "platform":     { "src": "platformAnim1", "fps": 7, "width": 340, "anchor": "surface" }
+  }
+}

@@ -1,0 +1,271 @@
+{
+ "textures": [
+  {
+   "image": "atlas0.png",
+   "format": "RGBA8888",
+   "size": {
+    "w": 1024,
+    "h": 608
+   },
+   "scale": 1,
+   "frames": [
+    {
+     "filename": "hero_idle/0",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 25,
+      "y": 1,
+      "w": 144,
+      "h": 240
+     },
+     "frame": {
+      "x": 2,
+      "y": 2,
+      "w": 144,
+      "h": 240
+     }
+    },
+    {
+     "filename": "hero_jetpack/2",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 2,
+      "y": 2,
+      "w": 183,
+      "h": 239
+     },
+     "frame": {
+      "x": 148,
+      "y": 2,
+      "w": 183,
+      "h": 239
+     }
+    },
+    {
+     "filename": "hero_jetpack/4",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 2,
+      "y": 2,
+      "w": 183,
+      "h": 239
+     },
+     "frame": {
+      "x": 333,
+      "y": 2,
+      "w": 183,
+      "h": 239
+     }
+    },
+    {
+     "filename": "hero_jetpack/0",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 2,
+      "y": 2,
+      "w": 176,
+      "h": 239
+     },
+     "frame": {
+      "x": 518,
+      "y": 2,
+      "w": 176,
+      "h": 239
+     }
+    },
+    {
+     "filename": "hero_jetpack/1",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 2,
+      "y": 2,
+      "w": 176,
+      "h": 239
+     },
+     "frame": {
+      "x": 696,
+      "y": 2,
+      "w": 176,
+      "h": 239
+     }
+    },
+    {
+     "filename": "hero_jetpack/3",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 2,
+      "y": 2,
+      "w": 176,
+      "h": 239
+     },
+     "frame": {
+      "x": 2,
+      "y": 244,
+      "w": 176,
+      "h": 239
+     }
+    },
+    {
+     "filename": "hero_jump/0",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 26,
+      "y": 3,
+      "w": 150,
+      "h": 238
+     },
+     "frame": {
+      "x": 180,
+      "y": 244,
+      "w": 150,
+      "h": 238
+     }
+    },
+    {
+     "filename": "hero_idle/1",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 25,
+      "y": 11,
+      "w": 147,
+      "h": 230
+     },
+     "frame": {
+      "x": 332,
+      "y": 244,
+      "w": 147,
+      "h": 230
+     }
+    },
+    {
+     "filename": "hero_crouch/0",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 188,
+      "h": 242
+     },
+     "spriteSourceSize": {
+      "x": 26,
+      "y": 16,
+      "w": 144,
+      "h": 225
+     },
+     "frame": {
+      "x": 481,
+      "y": 244,
+      "w": 144,
+      "h": 225
+     }
+    },
+    {
+     "filename": "platform/2",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 342,
+      "h": 123
+     },
+     "spriteSourceSize": {
+      "x": 1,
+      "y": 1,
+      "w": 340,
+      "h": 120
+     },
+     "frame": {
+      "x": 627,
+      "y": 244,
+      "w": 340,
+      "h": 120
+     }
+    },
+    {
+     "filename": "platform/1",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 342,
+      "h": 123
+     },
+     "spriteSourceSize": {
+      "x": 1,
+      "y": 1,
+      "w": 340,
+      "h": 115
+     },
+     "frame": {
+      "x": 2,
+      "y": 485,
+      "w": 340,
+      "h": 115
+     }
+    },
+    {
+     "filename": "platform/0",
+     "rotated": false,
+     "trimmed": true,
+     "sourceSize": {
+      "w": 342,
+      "h": 123
+     },
+     "spriteSourceSize": {
+      "x": 1,
+      "y": 1,
+      "w": 340,
+      "h": 114
+     },
+     "frame": {
+      "x": 344,
+      "y": 485,
+      "w": 340,
+      "h": 114
+     }
+    }
+   ]
+  }
+ ],
+ "meta": {
+  "app": "tools/build_sprites.py",
+  "version": "1"
+ }
+}

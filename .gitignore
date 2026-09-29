@@ -1,0 +1,15 @@
+# Архив для консоли Яндекса — собирается build.ps1, в репозиторий не нужен
+space-jump.zip
+
+# Мусор системы, редакторов и Python
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/
+node_modules/
+.claude/settings.local.json
+
+# Исходники художника. Если не хотите выкладывать их (особенно в публичный
+# репозиторий) — уберите решётки в двух строках ниже
+# *.psd
+# ChatGPT Image*.png

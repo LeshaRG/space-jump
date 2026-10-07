@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T15:59:22",
+ "generated": "2026-09-29T20:13:23",
  "atlas": {
   "key": "art",
   "json": "assets/art/atlas.json",
@@ -431,88 +431,6 @@
     }
    },
    "icon": "assets/art/skins/demon_icon.png"
-  },
-  "hemp": {
-   "atlas": {
-    "key": "skin_hemp",
-    "json": "assets/art/skins/hemp.json",
-    "path": "assets/art/skins/"
-   },
-   "sprites": {
-    "hero_crouch": {
-     "fps": 10,
-     "size": [
-      188,
-      242
-     ],
-     "pivot": [
-      0.5,
-      0.99484
-     ],
-     "ref": 240,
-     "group": "hero",
-     "frames": [
-      "hero_crouch/0"
-     ]
-    },
-    "hero_idle": {
-     "fps": 2.2,
-     "size": [
-      188,
-      242
-     ],
-     "pivot": [
-      0.5,
-      0.99484
-     ],
-     "ref": 240,
-     "group": "hero",
-     "frames": [
-      "hero_idle/0",
-      "hero_idle/1"
-     ]
-    },
-    "hero_jetpack": {
-     "fps": 12,
-     "size": [
-      188,
-      242
-     ],
-     "pivot": [
-      0.5,
-      0.99484
-     ],
-     "ref": 240,
-     "group": "hero",
-     "frames": [
-      "hero_jetpack/0",
-      "hero_jetpack/1",
-      "hero_jetpack/2",
-      "hero_jetpack/3",
-      "hero_jetpack/4",
-      "hero_jetpack/3",
-      "hero_jetpack/2",
-      "hero_jetpack/1"
-     ]
-    },
-    "hero_jump": {
-     "fps": 10,
-     "size": [
-      188,
-      242
-     ],
-     "pivot": [
-      0.5,
-      0.99484
-     ],
-     "ref": 240,
-     "group": "hero",
-     "frames": [
-      "hero_jump/0"
-     ]
-    }
-   },
-   "icon": "assets/art/skins/hemp_icon.png"
   },
   "red": {
    "atlas": {

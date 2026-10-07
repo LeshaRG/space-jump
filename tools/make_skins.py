@@ -244,34 +244,6 @@ def scatter(w, h, ax, ay, step, jitter=0.35):
     return pts
 
 
-def leaf_pattern(w, h, ax, ay):
-    """Лист конопли: семь зубчатых долей веером."""
-    cv = Canvas(w, h)
-    for (x, y, r) in scatter(w, h, ax, ay, step=235):
-        size = 105 + r.random() * 25
-        ang = (r.random() - 0.5) * 1.6
-        col = (58, 150, 66, 255) if r.random() < 0.6 else (40, 120, 52, 255)
-        vein = (24, 80, 34, 255)
-        # доли: (угол от оси, длина)
-        lobes = [(0, 1.0), (0.42, 0.86), (-0.42, 0.86), (0.85, 0.66), (-0.85, 0.66), (1.28, 0.38), (-1.28, 0.38)]
-        for la, ll in lobes:
-            L = size * ll
-            pts_l, pts_r = [], []
-            n = 18
-            for i in range(n + 1):
-                tt = i / n
-                hw = L * 0.16 * math.sin(math.pi * min(1, tt * 1.05)) ** 0.75 * (1 - 0.25 * tt)
-                tooth = 1 + 0.22 * ((i % 2) * 2 - 1) if 0.12 < tt < 0.92 else 1
-                pts_l.append((-hw * tooth, -L * tt))
-                pts_r.append((hw * tooth, -L * tt))
-            shape = pts_l + pts_r[::-1]
-            cv.poly(rot(shape, x, y, ang + la), fill=col, outline=vein, width=1.6)
-            cv.d.line([(p[0] * SS, p[1] * SS) for p in rot([(0, 0), (0, -L * 0.9)], x, y, ang + la)], fill=vein, width=int(1.4 * SS))
-        # черешок
-        cv.d.line([(p[0] * SS, p[1] * SS) for p in rot([(0, 0), (0, size * 0.35)], x, y, ang)], fill=vein, width=int(3 * SS))
-    return cv.result()
-
-
 def daisy_pattern(w, h, ax, ay):
     """Ромашки: белые лепестки, жёлтая серединка."""
     cv = Canvas(w, h)
@@ -453,7 +425,6 @@ def draw_tail(img, m, ax, ay, H):
 
 BLACK = ramp([(0, "#0e0e14"), (0.55, "#1e1f29"), (0.8, "#2d2e3b"), (0.95, "#3c3e4f"), (1, "#4c4f64")])
 RED   = ramp([(0, "#4a0a10"), (0.55, "#8e1520"), (0.8, "#c21f27"), (0.95, "#e0302f"), (1, "#f0443a")])
-SAGE  = ramp([(0, "#6e7866"), (0.55, "#a9b59e"), (0.8, "#d6e0cc"), (1, "#f2f7ea")])
 SKY   = ramp([(0, "#1d4a7a"), (0.55, "#3f7fbf"), (0.8, "#62a8e6"), (1, "#86c6ff")])
 CRIM  = ramp([(0, "#1a0508"), (0.55, "#3d0a12"), (0.8, "#6e0f1c"), (0.95, "#8e1424"), (1, "#a81a2a")])
 DARKG = ramp([(0, "#0c080a"), (0.5, "#1c1216"), (1, "#3a2830")])
@@ -466,8 +437,6 @@ def make(skin, img, m, anchor, H):
         recolor_region(img, m, m["fabric"], ramp_color(BLACK))
     elif skin == "red":
         recolor_region(img, m, m["fabric"], ramp_color(RED))
-    elif skin == "hemp":
-        recolor_region(img, m, m["fabric"], print_color(SAGE, leaf_pattern(w, h, ax, ay)))
     elif skin == "daisy":
         recolor_region(img, m, m["fabric"], print_color(SKY, daisy_pattern(w, h, ax, ay), shade_min=0.7))
     elif skin == "biker":
@@ -482,7 +451,7 @@ def make(skin, img, m, anchor, H):
         raise ValueError(f"нет рецепта для скина {skin}")
 
 
-ALL = ["black", "red", "hemp", "daisy", "biker", "demon"]
+ALL = ["black", "red", "daisy", "biker", "demon"]
 
 
 # ─── Кадры героя из art.config.json ───────────────────────

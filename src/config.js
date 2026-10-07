@@ -191,15 +191,14 @@ const CONFIG = {
   /**
    * Скины скафандра. Картинки делает tools/make_skins.py (перекраска арта
    * героя), атласы — tools/build_sprites.py. HIDDEN — убрать скин из магазина
-   * без пересборки (например, ["hemp"] перед модерацией).
+   * без пересборки (например, ["demon"], если попросит модерация).
    */
   SKINS: {
-    ORDER:  ["white", "black", "red", "hemp", "daisy", "biker", "demon"],
+    ORDER:  ["white", "black", "red", "daisy", "biker", "demon"],
     HIDDEN: [],
     white:  { PRICE: 0,    COLOR: "#f2efe9" },
     black:  { PRICE: 300,  COLOR: "#34343f" },
     red:    { PRICE: 300,  COLOR: "#d8262e" },
-    hemp:   { PRICE: 600,  COLOR: "#3fa34d" },
     daisy:  { PRICE: 600,  COLOR: "#7fc4ff" },
     biker:  { PRICE: 800,  COLOR: "#ff7a1a" },
     demon:  { PRICE: 2000, COLOR: "#b0142a", PREMIUM: true },
@@ -222,7 +221,7 @@ const CONFIG = {
 
   AUDIO: {
     SFX:   0.55,
-    MUSIC: 0.18,            // было 0.30 — на 40 % тише
+    MUSIC: 0.144,           // было 0.30: −40 %, затем ещё −20 %
   },
 
   STORAGE: {

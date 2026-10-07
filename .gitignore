@@ -13,3 +13,9 @@ node_modules/
 # репозиторий) — уберите решётки в двух строках ниже
 # *.psd
 # ChatGPT Image*.png
+
+# Промо-материалы: сырые кадры съёмки (сотни МБ, пересобираются
+# store/tools/capture.mjs и record.mjs)
+store/_raw/
+store/_rec/
+store/_tmp_video/

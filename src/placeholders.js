@@ -758,7 +758,10 @@ export const TEXTURES = {
   ph_planet_a: [256, 256, planet(51, "#ffb38a", "#8c3b5c", true)],
   ph_planet_b: [256, 256, planet(52, "#8ad8ff", "#27407d", false)],
   ph_planet_c: [256, 256, planet(53, "#c8a6ff", "#3c2a78", true)],
-  ph_horizon:  [8, 512, horizon],
+  // Высота 500, а не 512: текстура-степень двойки в WebGL повторяется по
+  // кругу, и прозрачный верх градиента смешивался с ярким низом — через весь
+  // экран шла светлая полоска. Не степень двойки — край не заворачивается.
+  ph_horizon:  [8, 500, horizon],
   ph_cracks:   [340, 40, cracks],
 
   ph_platform: [342, 123, platformFallback],

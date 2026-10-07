@@ -1,0 +1,12 @@
+{
+  "appId": "ru.lesharg.spacejump",
+  "appName": "Space Jump",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "ads": {
+    "interstitial": "",
+    "rewarded": "",
+    "ageRestricted": true
+  },
+  "privacyUrl": "https://lesharg.github.io/space-jump/rustore/privacy/"
+}

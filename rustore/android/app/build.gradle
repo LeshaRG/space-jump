@@ -1,0 +1,99 @@
+import groovy.json.JsonSlurper
+
+apply plugin: 'com.android.application'
+
+// Всё, что меняется от версии к версии, — в rustore/app.config.json:
+// пакет, номер версии, рекламные блоки Яндекса, возрастное ограничение рекламы.
+def appConfig = new JsonSlurper().parse(file('../../app.config.json'))
+
+// Ключ подписи — rustore/keystore/ (в git не попадает, см. rustore/.gitignore).
+def keystoreProps = new Properties()
+def keystorePropsFile = file('../../keystore/keystore.properties')
+if (keystorePropsFile.exists()) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+
+def str = { v -> '"' + (v ?: '').toString().replace('\\', '\\\\').replace('"', '\\"') + '"' }
+def ageRestricted = appConfig.ads?.ageRestricted != false
+
+android {
+    namespace = "ru.lesharg.spacejump"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId appConfig.appId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode appConfig.versionCode as int
+        versionName appConfig.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "YANDEX_INTERSTITIAL_ID", str(appConfig.ads?.interstitial)
+        buildConfigField "String", "YANDEX_REWARDED_ID", str(appConfig.ads?.rewarded)
+        buildConfigField "boolean", "YANDEX_AGE_RESTRICTED", ageRestricted.toString()
+        manifestPlaceholders = [yandexAgeRestricted: ageRestricted.toString()]
+
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+    signingConfigs {
+        release {
+            if (keystorePropsFile.exists()) {
+                storeFile file('../../keystore/' + keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
+    buildTypes {
+        // Отладочная сборка ставится рядом с настоящей: свой пакет и название «Space Jump тест»
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keystorePropsFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    // Реклама Яндекса: https://ads.yandex.com/helpcenter/ru/dev/android/quick-start
+    implementation "com.yandex.android:mobileads:8.5.0"
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

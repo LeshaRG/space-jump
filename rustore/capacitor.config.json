@@ -1,0 +1,18 @@
+{
+  "appId": "ru.lesharg.spacejump",
+  "appName": "Space Jump",
+  "webDir": "www",
+  "loggingBehavior": "debug",
+  "android": {
+    "backgroundColor": "#070716",
+    "allowMixedContent": false,
+    "captureInput": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "disable",
+      "style": "DARK",
+      "hidden": true
+    }
+  }
+}

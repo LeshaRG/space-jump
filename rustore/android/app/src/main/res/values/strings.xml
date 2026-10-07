@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Space Jump</string>
+    <string name="title_activity_main">Space Jump</string>
+    <string name="package_name">ru.lesharg.spacejump</string>
+    <string name="custom_url_scheme">ru.lesharg.spacejump</string>
+</resources>

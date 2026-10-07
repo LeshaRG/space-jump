@@ -1,0 +1,42 @@
+/* android.css — дополнения Android-версии (подключается после стилей игры). */
+
+/* Реклама не настроена или недоступна — прячем всё, что выдаётся за просмотр:
+   «продолжить», «×2 монеты», «+1 бустер», «монеты за рекламу». */
+html.no-ads .btn.ad,
+html.no-ads .revive,
+html.no-ads .bcard.coins { display: none !important; }
+
+/* Длинный тап и выделение текста в приложении не нужны */
+html.android, html.android body {
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ссылка на политику конфиденциальности под меню */
+.pv-link {
+  display: block; margin: 12px auto 0; padding: 4px 8px;
+  border: 0; background: none; cursor: pointer;
+  font: 600 12px var(--font); color: var(--muted);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.pv-link:active { color: var(--cyan2); }
+
+/* Экран политики: текст прокручивается внутри карточки */
+.screen.privacy { z-index: 200; }
+.screen.privacy .card {
+  display: flex; flex-direction: column;
+  max-height: 100%; padding-bottom: 12px; text-align: left;
+}
+.policy {
+  flex: 1; min-height: 0; overflow-y: auto; padding-right: 4px;
+  -webkit-user-select: text; user-select: text;
+  font-size: 13px; line-height: 1.5; color: #d6d8f5;
+}
+.policy h1 { margin-bottom: 4px; font-size: 18px; line-height: 1.25; color: var(--cyan2); }
+.policy h2 { margin: 14px 0 4px; font-size: 14px; color: var(--text); }
+.policy p, .policy li { margin-top: 6px; }
+.policy ul { padding-left: 18px; }
+.policy .muted { color: var(--muted); font-size: 12px; }
+.policy a { color: var(--cyan2); word-break: break-all; }
+.pv-version { margin-top: 10px; font-size: 11px; color: var(--muted); text-align: center; }

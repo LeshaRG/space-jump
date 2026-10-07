@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Фон игры: переменная bg в index.html -->
+    <color name="game_background">#070716</color>
+</resources>

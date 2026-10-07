@@ -83,7 +83,9 @@ function buildSprites(then) {
 
 /* ─── Наблюдение за файлами ─── */
 
-const IGNORE = /(^|[\\/])(node_modules|\.git|\.claude|assets[\\/]art|build)([\\/]|$)/;
+// store/ — промо-материалы (скриншоты, видео), rustore/ — Android-версия (www, Gradle):
+// их запись не должна перезагружать игру
+const IGNORE = /(^|[\\/])(node_modules|\.git|\.claude|assets[\\/]art|build|store|rustore)([\\/]|$)/;
 let timer = null;
 let pending = { art: false, code: false };
 const mtimes = new Map();

@@ -1,0 +1,28 @@
+# Зависимости и результаты сборки — пересобираются build.ps1
+node_modules/
+www/
+dist/
+
+# Android: кеши Gradle, сборка и копия веб-части (её кладёт cap sync)
+android/.gradle/
+android/.idea/
+android/.kotlin/
+android/local.properties
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+*.apk
+*.aab
+
+# Ключ подписи и пароли к нему. НИКОГДА не коммитить: репозиторий публичный.
+# Храните копию ключа отдельно (облако, флешка) — без него игру не обновить.
+keystore/
+*.jks
+*.keystore
+keystore.properties
+
+# Превью иконки под масками лаунчеров (scripts/make_icons.py) — только для проверки
+store/_preview*.png
